@@ -8,6 +8,4 @@ const markdownSchema = new Schema({
   createdAt: { type: Date, default: Date.now },
 });
 
-const markdownModel = mongoose.model('Markdown', markdownSchema);
-
-module.exports = markdownModel;
+module.exports = mongoose.model('markdown', markdownSchema);

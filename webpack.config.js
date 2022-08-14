@@ -7,8 +7,7 @@ module.exports = {
     path: path.resolve(__dirname, 'build'),
     publicPath: '/',
   },
-
-  mode: 'development',
+  mode: process.env.NODE_ENV,
   module: {
     rules: [
       {
@@ -22,16 +21,16 @@ module.exports = {
         },
       },
       {
-        test: /.(css|scss)$/,
+        test: /\.s[ac]ss$/i,
         exclude: /node_modules/,
-        use: ['style-loader', 'css-loader', 'scss-loader'],
+        use: ['style-loader', 'css-loader', 'sass-loader'],
       },
     ],
   },
   plugins: [new HTMLWebpackPlugin({ template: './client/index.html' })],
   devServer: {
     host: 'localhost',
-    port: 8080,
+    port: 8090,
     hot: true,
     open: true,
     compress: true,
@@ -49,11 +48,11 @@ module.exports = {
 
     proxy: {
       '/api/**': {
-        target: 'http://localhost:3000',
+        target: 'http://localhost:3500',
         secure: false,
       },
       '/assets/**': {
-        target: 'http://localhost:3000',
+        target: 'http://localhost:3500',
         secure: false,
       },
     },

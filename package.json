@@ -5,8 +5,9 @@
   "main": "server/server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "concurrently \"cross-env NODE_ENV=development webpack-dev-server --open --hot --progress --color \" \"nodemon ./server/server.js\"",
-    "build": "webpack build"
+    "start": "cross-env NODE_ENV=test nodemon ./server/server.js",
+    "dev": "concurrently \"cross-env NODE_ENV=development webpack-dev-server --open --hot --progress --color \" \"cross-env NODE_ENV=test nodemon ./server/server.js\"",
+    "build": "cross-env NODE_ENV=production webpack build"
   },
   "repository": {
     "type": "git",
@@ -19,12 +20,23 @@
   },
   "homepage": "https://github.com/sattwyk/mdninja#readme",
   "dependencies": {
+    "@emotion/react": "^11.9.0",
+    "@emotion/styled": "^11.8.1",
+    "@mui/icons-material": "^5.8.3",
+    "@mui/material": "^5.8.3",
     "axios": "^0.27.2",
     "dotenv": "^16.0.1",
     "express": "^4.18.1",
     "mongoose": "^6.3.5",
+    "nanoid": "^4.0.0",
     "react": "^17.0.2",
-    "react-dom": "^17.0.2"
+    "react-dom": "^17.0.2",
+    "react-markdown": "^8.0.3",
+    "react-router-dom": "^6.3.0",
+    "react-split": "^2.0.14",
+    "remark-gfm": "^3.0.1",
+    "sass": "^1.52.2",
+    "showdown": "^2.1.0"
   },
   "devDependencies": {
     "@babel/core": "^7.18.2",
@@ -32,11 +44,13 @@
     "@babel/preset-react": "^7.17.12",
     "babel-loader": "^8.2.5",
     "concurrently": "^7.2.1",
+    "cors": "^2.8.5",
     "cross-env": "^7.0.3",
     "css-loader": "^6.7.1",
     "file-loader": "^6.2.0",
     "html-webpack-plugin": "^5.5.0",
     "nodemon": "^2.0.16",
+    "sass-loader": "^13.0.0",
     "scss-loader": "^0.0.1",
     "style-loader": "^3.3.1",
     "webpack": "^5.73.0",
